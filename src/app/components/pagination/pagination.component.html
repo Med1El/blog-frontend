@@ -1,0 +1,7 @@
+<mat-paginator
+  [length]="totalPosts"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[2, 5, 10]"
+  (page)="triggerParentLoading($event)"
+  [disabled]="loading"
+></mat-paginator>

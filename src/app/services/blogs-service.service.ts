@@ -18,13 +18,12 @@ interface ApiResponse {
 })
 export class BlogsService {
 
-  private apiUrl = 'http://localhost:5000/api/posts';
+  private apiUrl = 'http://localhost:5000/api/posts?';
 
   constructor(private http: HttpClient) { }
 
-  getPosts(): Observable<ApiResponse> {
-    console.log('service');
-    return this.http.get<ApiResponse>(this.apiUrl);
+  getPosts(page: number, limit: number): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.apiUrl + 'page=' + page + '&limit=' + limit);
   }
 
 }

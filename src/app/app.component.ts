@@ -3,8 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { BlogsComponent } from "./components/blogs/blogs.component";
 
-import { HttpClientModule } from "@angular/common/http"
-
 
 @Component({
   selector: 'app-root',
@@ -12,7 +10,6 @@ import { HttpClientModule } from "@angular/common/http"
     RouterOutlet,
     NavbarComponent,
     BlogsComponent,
-    HttpClientModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
