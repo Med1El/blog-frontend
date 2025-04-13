@@ -1,0 +1,80 @@
+.blog-item {
+  background-color: white;
+  margin-bottom: 30px;
+  display: flex;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  align-items: stretch; /* Make items the same height */
+}
+
+.blog-item:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.blog-item-image {
+  min-width: 10rem; /* Fixed width for the image area */
+  background-color: #ddd; /* Placeholder for image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #777;
+  font-size: 1.1em;
+}
+
+.blog-item-content {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-item-title {
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 600;
+}
+
+.blog-item-text {
+  color: #555;
+  font-size: 1em;
+  line-height: 1.7;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3; /* Show only 3 lines */
+  -webkit-box-orient: vertical;
+}
+
+.pagination {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 8px;
+  text-decoration: none;
+  color: #333;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination a:hover {
+  background-color: #ffeb3b; /* Yellow on hover */
+  color: #222;
+  border-color: #fdd835;
+}
+
+.pagination a.current {
+  font-weight: 600;
+  background-color: #ffeb3b; /* Yellow for current */
+  color: #222;
+  border-color: #fdd835;
+}

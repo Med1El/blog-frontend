@@ -1,0 +1,35 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.blog-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.blog-item {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.image-container {
+  margin-right: 16px;
+  width: 150px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+mat-card-content {
+  flex-grow: 1;
+}
+
+mat-paginator {
+  margin-top: 16px;
+}
