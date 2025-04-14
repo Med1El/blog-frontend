@@ -1,12 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
   imports: [
     CommonModule,
-    MatListModule
+    MatListModule,
+    RouterModule
   ],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css'
@@ -14,4 +16,5 @@ import { CommonModule } from '@angular/common';
 export class BlogComponent {
   @Input() post: any;
 
+  ngOnInit() { }
 }

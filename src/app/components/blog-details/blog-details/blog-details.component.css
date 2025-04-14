@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  max-width: 956px;
+  margin: 2rem auto;
+  border-radius: 12px; /* Softer rounded corners */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Subtle modern shadow */
+  background-color: #f9f9f9;
+}
+
+.main-image {
+  margin-top: 2rem;
+  width: 40rem;
+  height: 22rem;
+  max-width: 40rem;
+  max-height: 22rem;
+  border-radius: 8px; /* Soft rounded corners for image */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle image shadow */
+}
+
+.img-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.small-img {
+  width: 10rem;
+  height: 7rem;
+  max-width: 10rem;
+  max-height: 7rem;
+  border-radius: 6px; /* Soft rounded corners for small images */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06); /* Subtle small image shadow */
+  transition: transform 0.2s ease-in-out; /* Subtle hover effect */
+}
+
+.small-img:hover {
+  transform: scale(1.05);
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-top: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.text {
+  line-height: 1.7;
+  font-size: 1.1rem;
+  text-wrap: pretty;
+  color: #555;
+  max-width: 50vw;
+  margin-bottom: 2rem;
+}
+
+.tag {
+  background-color: #e0f2f7;
+  color: #333;
+  padding: 1px;
+  border-radius: 2px;
+  margin-right: 4px;
+}
+
+.author {
+  margin: 3rem 0;
+  background-color: rgb(244, 212, 132);
+  display: block;
+  border-radius: 50%;
+  max-width: 10rem;
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Modern author shadow */
+}
+
+.icon-display {
+  transform: scale(1.5);
+  margin-bottom: 0.5rem;
+}
+
+.cat-container {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.cat {
+  background-color: #fbefbe;
+  color: #333;
+  padding: 1px;
+  border-radius: 2px;
+}

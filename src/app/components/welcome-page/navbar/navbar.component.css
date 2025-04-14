@@ -1,5 +1,5 @@
 .toolbar {
-  padding: 40px;
+  padding: 35px 40px;
   font-weight: 600;
   font-size: 25px;
   background-color: rgb(255, 255, 227);
@@ -19,4 +19,14 @@
 
 .btn-group {
   margin-left: auto;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+a:hover {
+  color: rgb(64, 129, 145);
 }

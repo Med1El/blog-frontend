@@ -2,7 +2,9 @@
   <img class="blog-item-image" [src]="post.mainImage" alt="" srcset="" />
 
   <div class="blog-item-content">
-    <h2 class="blog-item-title">{{ post.title }}</h2>
+    <h2 class="blog-item-title">
+      <a [routerLink]="['/blog', post._id]">{{ post.title }}</a>
+    </h2>
     <p class="blog-item-text">
       {{ post.content }}
     </p>

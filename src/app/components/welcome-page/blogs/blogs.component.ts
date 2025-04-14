@@ -5,9 +5,9 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { BlogComponent } from "../blog/blog.component";
-import { BlogsService } from '../../services/blogs-service.service';
+import { BlogsService } from '../../../services/blogs-service.service';
 import { PaginationComponent } from '../pagination/pagination.component';
-import BlogPost from '../../models/blog-post.model';
+import BlogPost from '../../../models/blog-post.model';
 
 @Component({
   selector: 'app-blogs',
@@ -27,7 +27,7 @@ export class BlogsComponent implements OnInit {
 
   loading: boolean = false;
   currentPage: number = 1;
-  pageSize: number = 2; // Initial page size
+  pageSize: number = 10; // Initial page size
   totalPosts: number = 0;
   errorMessage: string = '';
 
@@ -37,22 +37,45 @@ export class BlogsComponent implements OnInit {
     this.loadPosts();
   }
 
-  loadPosts(): void {
+  async loadPosts(): Promise<void> {
     this.loading = true;
     this.blogsService.getPosts(this.currentPage, this.pageSize).subscribe({
-      next: (res) => {
-        console.log(res);
+      next: async (res: any) => {
         this.posts = res.data;
         this.totalPosts = res.totalPosts;
+        this.loading = false;
       },
-      error: (error) => {
+      error: (error: Error) => {
         this.errorMessage = 'Error fetching posts: ' + error;
         console.error(error);
+        this.loading = false;
       }
     });
-    this.loading = false;
   }
 
+  async processImageUrl(url: string): Promise<string> {
+    if (url.startsWith('https://api.pexels.com/v1/')) {
+      try {
+        const response = await fetch(url, {
+          headers: {
+            Authorization: 'YFZFIm5lhv8B1Ep2v77DxxM1uPIIkUuP37Ag8OuNYaj2aHsZSrytyfVF' // Replace with your actual API key
+          }
+        });
+
+        if (!response.ok) {
+          console.error(`Unsplash API error: ${response.status} - ${response.statusText}`);
+          return url; // Return original URL on error
+        }
+
+        const json = await response.json();
+        return json.urls.small;
+      } catch (error) {
+        console.error('Error fetching or parsing image URL with header:', error);
+        return url; // Return original URL on error
+      }
+    }
+    return url;
+  }
 
   onPageFired(event: PageEvent): void {
     this.currentPage = event.pageIndex + 1;

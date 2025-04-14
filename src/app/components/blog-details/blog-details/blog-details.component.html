@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="sub-container">
+    <img class="main-image" [src]="postDetail.mainImage" />
+    <div class="img-container">
+      <img
+        class="small-img"
+        *ngFor="let img of postDetail.extraSmallImages"
+        [src]="img"
+        alt=""
+      />
+    </div>
+    <h1>{{ postDetail.title }}</h1>
+    <p class="text">{{ postDetail.content }}</p>
+    <span>Tags: </span>
+    <span *ngFor="let tag of postDetail.tags" class="tag">{{
+      tag + ", "
+    }}</span>
+    <div class="cat-container">
+      Category:&nbsp;&nbsp;<span class="cat"> {{ postDetail.category }}</span>
+    </div>
+  </div>
+  <div class="author">
+    <div><mat-icon class="icon-display">account_circle</mat-icon></div>
+    <div>{{ postDetail.author.name }}</div>
+  </div>
+</div>

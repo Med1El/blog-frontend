@@ -1,7 +1,13 @@
 export default interface BlogPost {
-    id: number;
+    _id: string;
     title: string;
     content: string;
     mainImage: string;
-    // Add other properties as needed
+    extraSmallImages: string[];
+    tags: string[];
+    category: string;
+    author: {
+        id: string;
+        name: string;
+    };
 }

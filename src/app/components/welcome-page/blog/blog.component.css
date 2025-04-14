@@ -14,13 +14,19 @@
 }
 
 .blog-item-image {
-  min-width: 10rem; /* Fixed width for the image area */
+  width: 12rem;
+  height: 12.2rem;
+  max-width: 12rem; /* Fixed width for all blog post images */
+  max-height: 12.2rem; /* Fixed height for all blog post images */
   background-color: #ddd; /* Placeholder for image */
   display: flex;
   justify-content: center;
   align-items: center;
   color: #777;
   font-size: 1.1em;
+  object-fit: fill; /* Fill the fixed dimensions, potentially cropping */
+  /* object-fit: contain; /* Ensure the whole image fits, may add empty space */
+  flex-shrink: 0;
 }
 
 .blog-item-content {
@@ -49,32 +55,13 @@
   -webkit-box-orient: vertical;
 }
 
-.pagination {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.pagination a {
-  display: inline-block;
-  padding: 10px 15px;
-  margin: 0 8px;
+a {
   text-decoration: none;
-  color: #333;
-  background-color: #fff;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Example modern font */
+  color: #333; /* Example text color */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
 }
 
-.pagination a:hover {
-  background-color: #ffeb3b; /* Yellow on hover */
-  color: #222;
-  border-color: #fdd835;
-}
-
-.pagination a.current {
-  font-weight: 600;
-  background-color: #ffeb3b; /* Yellow for current */
-  color: #222;
-  border-color: #fdd835;
+a:hover {
+  color: rgb(222, 191, 113); /* Example hover color */
 }
