@@ -3,7 +3,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
 
 
 
@@ -13,7 +13,8 @@ import { RouterModule } from '@angular/router';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
+    CommonModule
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
@@ -21,5 +22,17 @@ import { RouterModule } from '@angular/router';
 export class NavbarComponent {
 
 
+  hasLocalStorageValue() {
+    const token = localStorage.getItem('token');
+    if (token !== null && token.length > 0) {
+      return true;
+    }
+    return false;
+  }
+
+  logout() {
+    console.log('logout');
+    localStorage.removeItem('token');
+  }
 
 }

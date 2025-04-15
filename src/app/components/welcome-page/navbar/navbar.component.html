@@ -1,13 +1,19 @@
 <mat-toolbar color="secondary" class="toolbar">
   <span><a routerLink="blogs">BLOGGED</a></span>
-  <div class="btn-group">
-    <button mat-fab extended class="btn-login">
+  <div class="btn-group" *ngIf="!hasLocalStorageValue()">
+    <button mat-fab extended class="btn-login" routerLink="login">
       <mat-icon>login</mat-icon>
       Login
     </button>
-    <button mat-fab extended class="btn-register">
+    <button mat-fab extended class="btn-register" routerLink="signup">
       <mat-icon>perm_identity</mat-icon>
       Signup
+    </button>
+  </div>
+  <div class="btn-group" *ngIf="hasLocalStorageValue()">
+    <button mat-fab extended class="btn-login" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Logout
     </button>
   </div>
 </mat-toolbar>
