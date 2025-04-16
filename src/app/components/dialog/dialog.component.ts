@@ -3,14 +3,14 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-wrong-credentials',
+  selector: 'app-dialog',
   imports: [MatDialogModule, MatButtonModule],
-  templateUrl: './wrong-credentials.component.html',
-  styleUrl: './wrong-credentials.component.css'
+  templateUrl: './dialog.component.html',
+  styleUrl: './dialog.component.css'
 })
-export class WrongCredentialsComponent {
+export class DialogComponent {
 
-  readonly dialogRef = inject(MatDialogRef<WrongCredentialsComponent>);
+  readonly dialogRef = inject(MatDialogRef<DialogComponent>);
   readonly msg = inject<{ 'errorMsg': string }>(MAT_DIALOG_DATA);
 
   processedErrorMessage: string;

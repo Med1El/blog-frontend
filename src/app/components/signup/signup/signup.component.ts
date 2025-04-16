@@ -9,7 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog'
 import { AuthService } from '../../../services/auth.service';
-import { WrongCredentialsComponent } from '../../wrong-credentials/wrong-credentials.component';
+import { DialogComponent } from '../../dialog/dialog.component';
 import { MustMatch } from '../../../helpers/must-match.helper';
 
 @Component({
@@ -66,7 +66,7 @@ export class SignupComponent {
     if (this.signupForm.valid) {
       this.authService.signup(this.username?.value, this.email?.value, this.password?.value).subscribe({
         next: (res: any) => {
-          this.dialog.open(WrongCredentialsComponent, {
+          this.dialog.open(DialogComponent, {
             data: { 'errorMsg': 'Registration Was Succesful' }
           });
           this.router.navigateByUrl('login');
@@ -76,7 +76,7 @@ export class SignupComponent {
           //error.error.error.code
           if (error.error.error.code === 11000) {
             console.log(error);
-            this.dialog.open(WrongCredentialsComponent, {
+            this.dialog.open(DialogComponent, {
               data: { 'errorMsg': error.error.message + ': \n ' + Object.keys(error.error.error.keyValue) + ' \'' + Object.values(error.error.error.keyValue) + '\' already exists' }
             });
           }

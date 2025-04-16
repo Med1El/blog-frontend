@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog'
 import { AuthService } from '../../../services/auth.service';
-import { WrongCredentialsComponent } from '../../wrong-credentials/wrong-credentials.component';
+import { DialogComponent } from '../../dialog/dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -51,16 +51,18 @@ export class LoginComponent {
       this.authService.login(this.email?.value, this.password?.value).subscribe({
         next: (res: any) => {
           localStorage.setItem('token', res.token);
+          localStorage.setItem('username', res.username)
+          localStorage.setItem('id', res.id)
           this.router.navigateByUrl('blogs');
         },
         error: (error) => {
           if (error.status === 401) {
-            this.dialog.open(WrongCredentialsComponent, {
+            this.dialog.open(DialogComponent, {
               data: { 'errorMsg': 'Wrong Credentials' }
             });
           }
           else {
-            this.dialog.open(WrongCredentialsComponent, {
+            this.dialog.open(DialogComponent, {
               data: { 'errorMsg': error.message }
             });
           }

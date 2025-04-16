@@ -11,6 +11,10 @@
     </button>
   </div>
   <div class="btn-group" *ngIf="hasLocalStorageValue()">
+    <button mat-fab extended class="btn-creat-post" routerLink="createPost">
+      <mat-icon>add</mat-icon>
+      Create Post
+    </button>
     <button mat-fab extended class="btn-login" (click)="logout()">
       <mat-icon>logout</mat-icon>
       Logout

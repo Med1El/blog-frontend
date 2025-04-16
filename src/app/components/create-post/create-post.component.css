@@ -1,0 +1,145 @@
+.blog-post-form-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background-color: var(--primary-yellow); /* Consistent background */
+  min-height: calc(100vh - 64px); /* Adjust for navbar height */
+}
+
+.blog-post-form-card {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+}
+
+.form-title {
+  color: var(--primary-gold); /* Consistent title color */
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.upload-section {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.image-preview {
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  max-width: 45rem;
+  max-height: 30rem;
+}
+
+.preview-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-preview-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 0.5rem;
+}
+
+.preview-small-img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  max-height: 12rem;
+  object-fit: cover;
+}
+
+.inline-inputs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.inline-inputs mat-form-field {
+  flex-grow: 1;
+}
+
+mat-card-actions {
+  justify-content: flex-end;
+}
+
+/* Accent color (yellow/gold) for buttons and labels */
+:host ::ng-deep .mat-mdc-button.mat-accent,
+:host ::ng-deep .mat-mdc-raised-button.mat-accent,
+:host ::ng-deep .mat-mdc-fab.mat-accent,
+:host ::ng-deep .mat-mdc-mini-fab.mat-accent {
+  background-color: var(--primary-gold) !important;
+  color: var(--text-color) !important;
+}
+
+:host ::ng-deep .mat-mdc-text-field-outlined .mdc-notched-outline__leading,
+:host ::ng-deep .mat-mdc-text-field-outlined .mdc-notched-outline__notch,
+:host ::ng-deep .mat-mdc-text-field-outlined .mdc-notched-outline__trailing {
+  border-color: #a9a9a9; /* Subtle border color */
+}
+
+:host
+  ::ng-deep
+  .mat-mdc-text-field-outlined.mat-focused
+  .mdc-notched-outline__leading,
+:host
+  ::ng-deep
+  .mat-mdc-text-field-outlined.mat-focused
+  .mdc-notched-outline__notch,
+:host
+  ::ng-deep
+  .mat-mdc-text-field-outlined.mat-focused
+  .mdc-notched-outline__trailing {
+  border-color: var(--primary-gold); /* Focused border color */
+}
+
+:host ::ng-deep .mat-mdc-form-field-label {
+  color: #777;
+}
+
+:host ::ng-deep .mat-mdc-form-field.mat-focused .mat-mdc-form-field-label {
+  color: var(--primary-gold);
+}
+
+/* ... other styles ... */
+
+.upload-section label[for] {
+  display: inline-block; /* Make the label behave like a block for better sizing */
+  padding: 10px 15px;
+  background-color: var(--primary-gold);
+  color: var(--text-color);
+  border-radius: 4px;
+  cursor: pointer; /* Indicate it's clickable */
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.5rem; /* Add a little space below the button */
+}
+
+.upload-section label[for]:hover {
+  background-color: #e0ac00; /* Darker gold on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the file input (still hidden) */
+.upload-section input[type="file"] {
+  display: none;
+}
+
+/* ... rest of your CSS ... */
