@@ -58,12 +58,12 @@ export class LoginComponent {
         error: (error) => {
           if (error.status === 401) {
             this.dialog.open(DialogComponent, {
-              data: { 'errorMsg': 'Wrong Credentials' }
+              data: { 'message': 'Wrong Credentials' }
             });
           }
           else {
             this.dialog.open(DialogComponent, {
-              data: { 'errorMsg': error.message }
+              data: { 'message': error.message }
             });
           }
         }

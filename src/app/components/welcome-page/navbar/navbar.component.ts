@@ -31,7 +31,6 @@ export class NavbarComponent {
   }
 
   logout() {
-    console.log('logout');
     localStorage.removeItem('token');
   }
 

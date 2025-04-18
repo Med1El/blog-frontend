@@ -11,12 +11,16 @@ import { MatButtonModule } from '@angular/material/button';
 export class DialogComponent {
 
   readonly dialogRef = inject(MatDialogRef<DialogComponent>);
-  readonly msg = inject<{ 'errorMsg': string }>(MAT_DIALOG_DATA);
+  // readonly msg = inject<{ 'message': string }>(MAT_DIALOG_DATA);
 
-  processedErrorMessage: string;
+  processedMessage: string | undefined;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
-    this.processedErrorMessage = this.data.errorMsg.replace(/\n/g, '<br><br>');
+    if (typeof (this.data.message) === 'string' && this.data.message.includes('\n'))
+      this.processedMessage = this.data.message.replace(/\n/g, '<br><br>');
+    else {
+      this.processedMessage = data.message;
+    }
   }
 
   onNoClick(): void {

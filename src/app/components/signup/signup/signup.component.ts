@@ -7,7 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule, MatDialog } from '@angular/material/dialog'
+import { MatDialog } from '@angular/material/dialog';
+
 import { AuthService } from '../../../services/auth.service';
 import { DialogComponent } from '../../dialog/dialog.component';
 import { MustMatch } from '../../../helpers/must-match.helper';
@@ -24,7 +25,6 @@ import { MustMatch } from '../../../helpers/must-match.helper';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    MatDialogModule
   ],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
@@ -67,7 +67,7 @@ export class SignupComponent {
       this.authService.signup(this.username?.value, this.email?.value, this.password?.value).subscribe({
         next: (res: any) => {
           this.dialog.open(DialogComponent, {
-            data: { 'errorMsg': 'Registration Was Succesful' }
+            data: { 'message': 'Registration Was Succesful' }
           });
           this.router.navigateByUrl('login');
         },
@@ -75,9 +75,9 @@ export class SignupComponent {
           //error.error.message
           //error.error.error.code
           if (error.error.error.code === 11000) {
-            console.log(error);
+            console.error(error);
             this.dialog.open(DialogComponent, {
-              data: { 'errorMsg': error.error.message + ': \n ' + Object.keys(error.error.error.keyValue) + ' \'' + Object.values(error.error.error.keyValue) + '\' already exists' }
+              data: { 'message': error.error.message + ': \n ' + Object.keys(error.error.error.keyValue) + ' \'' + Object.values(error.error.error.keyValue) + '\' already exists' }
             });
           }
 

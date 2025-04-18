@@ -47,8 +47,6 @@ export class BlogsService {
       return new Observable((subscriber) => subscriber.error('No token'));
     }
 
-    console.log('userCreds ' + id + ' : ' + username);
-
     if (!id || !username) {
       console.error('No user credentials found.');
       // Optionally return an error observable or handle this case as needed

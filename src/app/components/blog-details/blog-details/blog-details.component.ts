@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { BlogsService } from '../../../services/blogs-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
-
+import { BlogsService } from '../../../services/blogs-service.service';
 import BlogPost from '../../../models/blog-post.model';
 
 @Component({
@@ -20,7 +19,6 @@ export class BlogDetailsComponent {
 
   postId: string | null = '';
   loading: boolean = false;
-  errorMessage: string = '';
   postDetail: BlogPost = {
     _id: "",
     title: "",
@@ -51,28 +49,13 @@ export class BlogDetailsComponent {
     this.blogsService.getPost(this.postId).subscribe({
       next: async (res) => {
         this.postDetail = res.data;
-        this.postDetail.mainImage = await this.processImageUrl(this.postDetail.mainImage);
         this.loading = false;
       },
       error: (error: Error) => {
-        this.errorMessage = 'Error loading blog details: ' + error;
         this.loading = false;
         console.error(error);
       },
     });
   }
 
-  async processImageUrl(url: string): Promise<string> {
-    if (url.startsWith('https://api.unsplash.com/')) {
-      try {
-        const response = await fetch(url);
-        const json = await response.json();
-        return json.urls.regular;
-      } catch (error) {
-        console.error('Error fetching or parsing image URL:', error);
-        return url; // Return original URL on error
-      }
-    }
-    return url;
-  }
 }

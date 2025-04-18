@@ -1,12 +1,10 @@
 .blog-item {
-  background-color: white;
-  margin-bottom: 30px;
   display: flex;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: box-shadow 0.3s ease;
-  align-items: stretch; /* Make items the same height */
+  min-width: 500px;
 }
 
 .blog-item:hover {
@@ -15,29 +13,24 @@
 
 .blog-item-image {
   width: 12rem;
-  height: 12.2rem;
+  height: 12rem;
   max-width: 12rem; /* Fixed width for all blog post images */
-  max-height: 12.2rem; /* Fixed height for all blog post images */
+  max-height: 12rem; /* Fixed height for all blog post images */
   background-color: #ddd; /* Placeholder for image */
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: #777;
-  font-size: 1.1em;
-  object-fit: fill; /* Fill the fixed dimensions, potentially cropping */
+  object-fit: fill;
+  /* Fill the fixed dimensions, potentially cropping */
   /* object-fit: contain; /* Ensure the whole image fits, may add empty space */
-  flex-shrink: 0;
 }
 
 .blog-item-content {
-  flex-grow: 1;
-  padding: 20px;
+  padding: 1rem 1.6rem;
   display: flex;
   flex-direction: column;
 }
 
 .blog-item-title {
-  font-size: 1.5em;
+  font-size: 1.35rem;
   margin-top: 0;
   margin-bottom: 10px;
   color: #333;
@@ -46,7 +39,7 @@
 
 .blog-item-text {
   color: #555;
-  font-size: 1em;
+  font-size: 1rem;
   line-height: 1.7;
   overflow: hidden;
   display: -webkit-box;
@@ -57,11 +50,11 @@
 
 a {
   text-decoration: none;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Example modern font */
-  color: #333; /* Example text color */
-  transition: color 0.3s ease; /* Smooth color transition on hover */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  transition: color 0.3s ease;
 }
 
 a:hover {
-  color: rgb(222, 191, 113); /* Example hover color */
+  color: rgb(222, 191, 113);
 }

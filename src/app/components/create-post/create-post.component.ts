@@ -5,10 +5,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { BlogsService } from '../../services/blogs-service.service';
-import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+
+import { DialogComponent } from '../dialog/dialog.component';
+import { BlogsService } from '../../services/blogs-service.service';
 declare const cloudinary: any;
 
 @Component({
@@ -48,7 +49,6 @@ export class CreatePostComponent {
       },
       (error: any, result: any) => {
         if (!error && result && result.event === 'success') {
-          console.log('Main Image Upload Result:', result.info.secure_url);
           this.blogPostForm.patchValue({ mainImage: result.info.secure_url });
         }
       }
@@ -65,11 +65,9 @@ export class CreatePostComponent {
       },
       (error: any, result: any) => {
         if (!error && result && result.event === 'success') {
-          console.log('Extra Small Image Upload Result:', result.info.secure_url);
           this.extraSmallImageUrls.push(result.info.secure_url);
           this.blogPostForm.patchValue({ extraSmallImages: this.extraSmallImageUrls });
         } else if (result && result.event === 'close') {
-          console.log('All extra small images uploaded:', this.extraSmallImageUrls);
           this.blogPostForm.patchValue({ extraSmallImages: this.extraSmallImageUrls });
         }
       }
@@ -103,8 +101,8 @@ export class CreatePostComponent {
 
   onSubmit(): void {
     if (this.blogPostForm.valid) {
-      const mainImageToSend = this.mainImage?.value ? this.mainImage.value : 'https://picsum.photos/1000/1000';
-      const extraSmallImagesToSend = !this.extraSmallImages?.value.length ? ['https://picsum.photos/1000/1000', 'https://picsum.photos/1000/1000', 'https://picsum.photos/1000/1000'] : this.extraSmallImages.value;
+      const mainImageToSend = this.mainImage?.value ? this.mainImage.value : 'https://picsum.photos/1000/1000?random=10';
+      const extraSmallImagesToSend = !this.extraSmallImages?.value.length ? ['https://picsum.photos/1000/1000?random=20', 'https://picsum.photos/1000/1000?random=30', 'https://picsum.photos/1000/1000?random=40'] : this.extraSmallImages.value;
 
       this.blogsService.createPost(
         this.title?.value,
@@ -118,13 +116,13 @@ export class CreatePostComponent {
       ).subscribe({
         next: (res: any) => {
           this.dialog.open(DialogComponent, {
-            data: { 'errorMsg': 'The post was created successfully' }
+            data: { 'message': 'The post was created successfully' }
           });
           this.router.navigateByUrl('blog/' + res.data._id);
         },
         error: error => {
           this.dialog.open(DialogComponent, {
-            data: { 'errorMsg': error }
+            data: { 'message': error.message }
           });
         }
       });

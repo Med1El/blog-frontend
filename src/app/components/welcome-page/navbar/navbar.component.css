@@ -1,15 +1,16 @@
 .toolbar {
-  padding: 35px 40px;
+  padding: 2rem 2.6rem;
   font-weight: 600;
-  font-size: 25px;
+  font-size: 1.6rem;
   background-color: rgb(255, 255, 227);
   display: flex;
+  margin-bottom: 2.4rem;
 }
 
 .btn-login {
   background-color: lightyellow;
   color: black;
-  margin-right: 15px;
+  margin-right: 1rem;
   box-shadow: 0px 0px 4px rgb(152, 152, 130);
   border-radius: 5px;
 }
@@ -42,4 +43,3 @@ a {
 a:hover {
   color: rgb(64, 129, 145);
 }
-

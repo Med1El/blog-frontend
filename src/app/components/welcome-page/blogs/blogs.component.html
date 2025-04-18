@@ -1,19 +1,17 @@
+<div class="blog-container" *ngFor="let p of posts">
+  <app-blog [post]="p"></app-blog>
+</div>
+
 <div class="container">
-  <div class="blog-container" *ngFor="let p of posts">
-    <app-blog [post]="p"></app-blog>
-  </div>
+  <app-pagination
+    [totalPosts]="totalPosts"
+    [pageSize]="pageSize"
+    [loading]="loading"
+    [currentPage]="currentPage"
+    (pageChanged)="onPageFired($event)"
+  >
+  </app-pagination>
 
-  <div style="display: flex; justify-content: center">
-    <app-pagination
-      [totalPosts]="totalPosts"
-      [pageSize]="pageSize"
-      [loading]="loading"
-      [currentPage]="currentPage"
-      (pageChanged)="onPageFired($event)"
-    >
-    </app-pagination>
-  </div>
-
-  <div *ngIf="loading">Loading posts...</div>
-  <div *ngIf="errorMessage">{{ errorMessage }}</div>
+  <div class="text-loading" *ngIf="loading">Loading posts...</div>
+  <div class="text-error" *ngIf="errorMessage">{{ errorMessage }}</div>
 </div>

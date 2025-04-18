@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
-import { PageEvent } from '@angular/material/paginator';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { BlogComponent } from "../blog/blog.component";
-import { BlogsService } from '../../../services/blogs-service.service';
 import { PaginationComponent } from '../pagination/pagination.component';
 import BlogPost from '../../../models/blog-post.model';
+import { BlogsService } from '../../../services/blogs-service.service';
 
 @Component({
   selector: 'app-blogs',
   imports: [
     CommonModule,
-    MatListModule,
     BlogComponent,
     PaginationComponent,
     MatPaginatorModule
@@ -27,7 +25,7 @@ export class BlogsComponent implements OnInit {
 
   loading: boolean = false;
   currentPage: number = 1;
-  pageSize: number = 10; // Initial page size
+  pageSize: number = 5; // Initial page size
   totalPosts: number = 0;
   errorMessage: string = '';
 
@@ -37,7 +35,7 @@ export class BlogsComponent implements OnInit {
     this.loadPosts();
   }
 
-  async loadPosts(): Promise<void> {
+  loadPosts() {
     this.loading = true;
     this.blogsService.getPosts(this.currentPage, this.pageSize).subscribe({
       next: async (res: any) => {
@@ -45,37 +43,21 @@ export class BlogsComponent implements OnInit {
         this.totalPosts = res.totalPosts;
         this.loading = false;
       },
-      error: (error: Error) => {
-        this.errorMessage = 'Error fetching posts: ' + error;
-        console.error(error);
+      error: (error: HttpErrorResponse) => { // Type the error as HttpErrorResponse
         this.loading = false;
+        console.error('Error fetching posts:', error);
+
+        if (error.error instanceof ErrorEvent) {
+          // Client-side error or network error
+          this.errorMessage = 'Error fetching posts: ' + error.error.message;
+        } else {
+          // Backend returned an unsuccessful response code
+          this.errorMessage = `Error fetching posts: Server returned code ${error.status}, message was: ${error.message} `;
+        }
       }
     });
   }
 
-  async processImageUrl(url: string): Promise<string> {
-    if (url.startsWith('https://api.pexels.com/v1/')) {
-      try {
-        const response = await fetch(url, {
-          headers: {
-            Authorization: 'YFZFIm5lhv8B1Ep2v77DxxM1uPIIkUuP37Ag8OuNYaj2aHsZSrytyfVF' // Replace with your actual API key
-          }
-        });
-
-        if (!response.ok) {
-          console.error(`Unsplash API error: ${response.status} - ${response.statusText}`);
-          return url; // Return original URL on error
-        }
-
-        const json = await response.json();
-        return json.urls.small;
-      } catch (error) {
-        console.error('Error fetching or parsing image URL with header:', error);
-        return url; // Return original URL on error
-      }
-    }
-    return url;
-  }
 
   onPageFired(event: PageEvent): void {
     this.currentPage = event.pageIndex + 1;
