@@ -58,3 +58,58 @@ a {
 a:hover {
   color: rgb(222, 191, 113);
 }
+
+/* Media Queries for Responsiveness */
+
+/* For smaller screens (up to 600px) */
+@media screen and (max-width: 600px) {
+  .blog-item {
+    flex-direction: column;
+    min-width: auto;
+  }
+
+  .blog-item-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+  }
+
+  .blog-item-content {
+    padding: 0.75rem;
+  }
+
+  .blog-item-title {
+    font-size: 1.2rem;
+  }
+
+  .blog-item-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* For medium screens (601px to 900px) */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .blog-item {
+    min-width: auto;
+  }
+
+  .blog-item-image {
+    width: 10rem;
+    height: 10rem;
+    max-width: 10rem;
+    max-height: 10rem;
+  }
+
+  .blog-item-content {
+    padding: 0.8rem 1rem;
+  }
+
+  .blog-item-title {
+    font-size: 1.3rem;
+  }
+
+  .blog-item-text {
+    font-size: 0.95rem;
+  }
+}

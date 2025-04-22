@@ -71,17 +71,14 @@ h1 {
 .author {
   margin: 3rem 0;
   background-color: rgb(244, 212, 132);
-  display: block;
   border-radius: 50%;
   max-width: 10rem;
   width: 10rem;
   height: 10rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   font-size: 1.1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Modern author shadow */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding-top: 2rem;
 }
 
 .icon-display {
@@ -101,4 +98,82 @@ h1 {
   color: #333;
   padding: 1px;
   border-radius: 2px;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For smaller screens (up to 600px) */
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .main-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+  }
+
+  .img-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .small-img {
+    width: 8rem;
+    height: 5rem;
+    max-width: 8rem;
+    max-height: 5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .text {
+    font-size: 1rem;
+    max-width: 90vw;
+  }
+
+  .author {
+    margin: 2rem 0;
+    max-width: 7rem;
+    width: 7rem;
+    height: 7rem;
+    text-align: center;
+  }
+
+  .icon-display {
+    transform: scale(1.2);
+  }
+}
+
+/* For medium screens (601px to 900px) */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .container {
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+  }
+
+  .main-image {
+    width: 80%;
+    max-width: 80%;
+    height: auto;
+    max-height: none;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .text {
+    font-size: 1.05rem;
+    max-width: 70vw;
+  }
 }

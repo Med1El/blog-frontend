@@ -1,5 +1,4 @@
-// pagination.component.ts
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
@@ -7,6 +6,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
     MatPaginatorModule
   ],
   templateUrl: './pagination.component.html',
+  encapsulation: ViewEncapsulation.None,
 })
 export class PaginationComponent {
   @Input() totalPosts: number = 0;

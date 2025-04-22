@@ -43,3 +43,41 @@ a {
 a:hover {
   color: rgb(64, 129, 145);
 }
+
+/* Media Queries for Responsiveness */
+
+/* For smaller screens (up to 600px) */
+@media screen and (max-width: 600px) {
+  .toolbar {
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .btn-group {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .btn-login,
+  .btn-register,
+  .btn-creat-post {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.7rem;
+  }
+}
+
+/* For medium screens (600px to 900px) */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .toolbar {
+    padding: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  .btn-login,
+  .btn-register,
+  .btn-creat-post {
+    margin-right: 0.7rem;
+    font-size: 1rem;
+  }
+}

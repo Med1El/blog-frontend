@@ -13,3 +13,21 @@ h3 {
   padding: 4rem;
   padding-top: 1rem;
 }
+
+/* Media Queries for Responsiveness */
+
+/* For smaller screens (up to 600px) */
+@media screen and (max-width: 600px) {
+  h3 {
+    padding: 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* For medium screens (601px to 900px) */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  h3 {
+    padding: 3rem;
+    font-size: 1.1rem;
+  }
+}

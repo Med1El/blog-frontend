@@ -142,4 +142,46 @@ mat-card-actions {
   display: none;
 }
 
-/* ... rest of your CSS ... */
+/* Media Queries for Responsiveness */
+
+/* For smaller screens (up to 600px) */
+@media screen and (max-width: 600px) {
+  .blog-post-form-container {
+    padding: 1rem;
+  }
+
+  .blog-post-form-card {
+    padding: 1rem;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .inline-inputs {
+    flex-direction: column;
+  }
+
+  .image-preview {
+    max-width: 100%;
+  }
+}
+
+/* For medium screens (601px to 900px) */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .blog-post-form-container {
+    padding: 1.5rem;
+  }
+
+  .blog-post-form-card {
+    padding: 1.5rem;
+  }
+
+  .form-title {
+    font-size: 1.6rem;
+  }
+
+  .image-preview {
+    max-width: 100%;
+  }
+}
